@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -71,6 +72,17 @@ public abstract class Dictionary {
         else return new String("");
     }
 
+    protected String[] outputAll() {
+        String[] temp = new String[slovar.size()];
+        int index = 0;
+        for (Map.Entry<String, String> entry : slovar.entrySet()) {
+            String keyValue = entry.getKey() + "=" + entry.getValue();
+            temp[index] = keyValue;
+            index++;
+        }
+        return temp;
+    }
+
     private boolean keyExists(String key) throws KeyNotExistsException {
         if(getSlovar().get(key) != null || (getSlovar().get(key) == null && getSlovar().containsKey(key))) {
             return true;
@@ -80,6 +92,7 @@ public abstract class Dictionary {
         }
     }
 
-    protected abstract void UpdateFile();
+    abstract void LoadFile(File file);
+    abstract void UpdateFile();
 
 }

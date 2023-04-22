@@ -1,17 +1,16 @@
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
 import java.io.*;
 import java.util.Map;
 
-public class EngDictionary extends Dictionary{
-    final String PATH = "eng.txt";
-    public EngDictionary() {
-        super(new String("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"),
-            new String("абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"), 5);
+public class DigitDictionary extends Dictionary{
+    final String PATH = "digit.txt";
+    public DigitDictionary() {
+        super(new String("1234567890"),
+                new String("абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"), 4);
 
         File file = new File(PATH);
         LoadFile(file);
     }
+
 
     protected void LoadFile(File file) {
         if(file.exists()) {
@@ -32,6 +31,4 @@ public class EngDictionary extends Dictionary{
         }
         System.out.println("Записано в TXT");
     }
-
-
 }
