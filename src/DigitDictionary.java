@@ -12,7 +12,7 @@ public class DigitDictionary extends Dictionary{
     }
 
 
-    protected void LoadFile(File file) {
+    void LoadFile(File file) {
         if(file.exists()) {
             try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(PATH))) {
                 Map<String, String> readMap = (Map<String, String>) inputStream.readObject();
@@ -23,7 +23,7 @@ public class DigitDictionary extends Dictionary{
         }
     }
 
-    protected void UpdateFile() {
+    void UpdateFile() {
         try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(PATH))) {
             outputStream.writeObject(getSlovar());
         } catch (IOException e) {
