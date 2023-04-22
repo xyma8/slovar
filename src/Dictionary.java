@@ -23,7 +23,7 @@ public abstract class Dictionary {
         return lengthKey;
     }
 
-    protected void setLengthKey(int l) {
+    private void setLengthKey(int l) {
         if(l<=0) lengthKey = 1;
         else lengthKey = l;
     }
@@ -32,7 +32,7 @@ public abstract class Dictionary {
         return alphabetKey;
     }
 
-    protected void setAlphabetKey(String a) {
+    private void setAlphabetKey(String a) {
         if(a != null) alphabetKey = a;
         else alphabetKey = "a";
     }
@@ -41,7 +41,7 @@ public abstract class Dictionary {
         return alphabetValue;
     }
 
-    protected void setAlphabetValue(String a) {
+    private void setAlphabetValue(String a) {
         if(a != null) alphabetValue = a;
         else alphabetValue = "a";
     }
