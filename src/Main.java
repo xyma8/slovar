@@ -12,7 +12,7 @@ public class Main {
         while(menu != 0) {
             System.out.println();
             System.out.println("1 - Сменить словарь");
-            System.out.println("2 - Чтение списка пар из файла");
+            System.out.println("2 - Чтение списка пар из словаря");
             System.out.println("3 - Удаление записи по ключу");
             System.out.println("4 - Поиск записи по ключу");
             System.out.println("5 - Добавить запись");
