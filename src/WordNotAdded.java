@@ -1,2 +1,6 @@
-package PACKAGE_NAME;public class WordNotAdded {
+public class WordNotAdded extends Exception {
+
+    public WordNotAdded(String message){
+        super(message);
+    }
 }

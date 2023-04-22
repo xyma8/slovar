@@ -1,14 +1,11 @@
 import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
+    static OneDictionary eng = new OneDictionary();
+    static Scanner scanner = new Scanner(new InputStreamReader(System.in));
     public static void main(String[] args){
-        Map<String, String> slovar1 = new HashMap<String, String>();
-        Map<String, String> slovar2 = new HashMap<String, String>();
         int menu = 0;
-        Scanner scanner = new Scanner(new InputStreamReader(System.in));
         System.out.println("Меню:");
         while(menu != 5) {
             System.out.println("1 - чтение списка пар из файла");
@@ -30,19 +27,43 @@ public class Main {
         }
     }
 
-    private static void readFromSlovar() {
+    private static void readFromSlovar() {       
 
     }
 
     private static void deleteEntry() {
-
+        System.out.println("Введите ключ:");
+        String key = scanner.next();
+        try{
+            eng.deleteWord(key);
+            System.out.println(key+" удалено");
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
     }
 
     private static void findEntryByKey() {
-
+        System.out.println("Введите ключ:");
+        String key = scanner.next();
+        try{
+            String value = eng.findWordByKey(key);
+            System.out.println("По ключу "+key+" значение - "+value);
+        }
+        catch(Exception e) {
+            System.out.println(e);
+        }
     }
 
     private static void addEntry() {
-
+        System.out.println("Введите ключ:");
+        String key = scanner.next();
+        System.out.println("Введите значение");
+        String value = scanner.next();
+        try {
+            eng.addWord(key, value);
+        }catch (Exception e){
+            System.out.println(e);
+        }
     }
 }
