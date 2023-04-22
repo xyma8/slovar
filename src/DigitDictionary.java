@@ -5,7 +5,7 @@ public class DigitDictionary extends Dictionary{
     final String PATH = "digit.txt";
     public DigitDictionary() {
         super(new String("1234567890"),
-                new String("абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"), 4);
+                new String("абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"), 5);
 
         File file = new File(PATH);
         LoadFile(file);

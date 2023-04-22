@@ -14,6 +14,11 @@ public abstract class Dictionary {
         setLengthKey(lengthKey);
     }
 
+    Dictionary(String alphabetKey, String alphabetValue) {
+        setAlphabetKey(alphabetKey);
+        setAlphabetValue(alphabetValue);
+    }
+
     protected int getLengthKey() {
         return lengthKey;
     }
@@ -49,13 +54,14 @@ public abstract class Dictionary {
         if(s != null) slovar = s;
     }
 
-    protected void addWord(String key, String value) throws WordAdded {
+    protected void addWord(String key, String value) throws WordAddedException {
         if((key != null && key.length() == getLengthKey() && key.matches("["+getAlphabetKey()+"]+"))
         && (value != null && value.matches("["+getAlphabetValue()+"]+"))) {
             slovar.put(key, value);
             UpdateFile();
         }
-        else throw new WordAdded("Слово не добавлено");
+        else throw new WordAddedException("Слово не добавлено");
+
     }
     
     protected void deleteWord(String key) throws KeyNotExistsException {
