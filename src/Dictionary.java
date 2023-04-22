@@ -49,13 +49,13 @@ public abstract class Dictionary {
         if(s != null) slovar = s;
     }
 
-    protected void addWord(String key, String value) throws WordNotAdded {
+    protected void addWord(String key, String value) throws WordAdded {
         if((key != null && key.length() == getLengthKey() && key.matches("["+getAlphabetKey()+"]+"))
         && (value != null && value.matches("["+getAlphabetValue()+"]+"))) {
             slovar.put(key, value);
             UpdateFile();
         }
-        else throw new WordNotAdded("Слово не добавлено");
+        else throw new WordAdded("Слово не добавлено");
     }
     
     protected void deleteWord(String key) throws KeyNotExistsException {
