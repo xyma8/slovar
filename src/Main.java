@@ -2,7 +2,7 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Main {
-    static Dictionary eng = new OneDictionary();
+    static Dictionary eng = new EngDictionary();
     static Scanner scanner = new Scanner(new InputStreamReader(System.in));
     public static void main(String[] args){
         int menu = 0;

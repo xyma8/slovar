@@ -40,6 +40,14 @@ public abstract class Dictionary {
         else alphabetValue = "a";
     }
 
+    protected Map<String, String> getSlovar() {
+        return slovar;
+    }
+
+    protected void setSlovar(Map<String, String> s) {
+        if(s != null) slovar = s;
+    }
+
     protected void addWord(String key, String value) throws WordNotAdded {
         if((key != null && key.length() == getLengthKey() && key.matches("["+getAlphabetKey()+"]+"))
         && (value != null && value.matches("["+getAlphabetValue()+"]+"))) {
@@ -51,20 +59,20 @@ public abstract class Dictionary {
     
     protected void deleteWord(String key) throws KeyNotExistsException {
         if(keyExists(key)) {
-            slovar.remove(key);
+            getSlovar().remove(key);
             UpdateFile();
         }
     }
 
     protected String findWordByKey(String key) throws KeyNotExistsException {
         if(keyExists(key)) {
-            return slovar.get(key);
+            return getSlovar().get(key);
         }
         else return new String("");
     }
 
     private boolean keyExists(String key) throws KeyNotExistsException {
-        if(slovar.get(key) != null || (slovar.get(key) == null && slovar.containsKey(key))) {
+        if(getSlovar().get(key) != null || (getSlovar().get(key) == null && getSlovar().containsKey(key))) {
             return true;
         }
         else  {
