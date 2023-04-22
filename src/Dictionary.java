@@ -44,7 +44,7 @@ public abstract class Dictionary {
         if((key != null && key.length() == getLengthKey() && key.matches("["+getAlphabetKey()+"]+"))
         && (value != null && value.matches("["+getAlphabetValue()+"]+"))) {
             slovar.put(key, value);
-
+            UpdateFile();
         }
         else throw new WordNotAdded("Слово не добавлено");
     }
@@ -52,6 +52,7 @@ public abstract class Dictionary {
     protected void deleteWord(String key) throws KeyNotExistsException {
         if(keyExists(key)) {
             slovar.remove(key);
+            UpdateFile();
         }
     }
 
@@ -70,5 +71,7 @@ public abstract class Dictionary {
             throw new KeyNotExistsException("Ключ не найден");         
         }
     }
+
+    protected abstract void UpdateFile();
 
 }

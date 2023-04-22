@@ -6,5 +6,9 @@ public class OneDictionary extends Dictionary{
 
     }
 
+    protected void UpdateFile() {
+        System.out.println("updated");
+    }
+
 
 }
