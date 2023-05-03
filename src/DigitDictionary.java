@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.Map;
 
 public class DigitDictionary extends Dictionary{
-    final String PATH = "digit.txt";
+    final String PATH = "digit.gc";
     public DigitDictionary() {
         super(new String("1234567890"),
                 new String("абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"), 5);

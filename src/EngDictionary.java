@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Map;
 
 public class EngDictionary extends Dictionary{
-    final String PATH = "eng.txt";
+    final String PATH = "eng.gc";
     public EngDictionary() {
         super(new String("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"),
             new String("абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"), 4);
