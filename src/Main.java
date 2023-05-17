@@ -102,14 +102,27 @@ public class Main {
 
     private static void addEntry() {
         boolean r = false;
+        String key = "";
+        String value = "";
         while(!r) {
-        System.out.println("Введите ключ:");
-        String key = scanner.next();
-        System.out.println("Введите значение");
-        String value = scanner.next();
+            System.out.println("Введите ключ:");
+            key = scanner.next();
+            while(!dct.checkKey(key)) {
+                System.out.println("Неправильный ключ, введите заново:");
+                key = scanner.next();
+            }
+
+            System.out.println("Введите значение");
+            value = scanner.next();
+            while(!dct.checkValue(value)) {
+                System.out.println("Неправильное значение, введите заново:");
+                value = scanner.next();
+            }
+
             try {
                 dct.addWord(key, value);
                 r = true;
+                System.out.println(key+"="+value+" успешно добавлено");
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -121,5 +134,6 @@ public class Main {
         System.out.println("Алфавит значения: "+dct.getAlphabetValue());
         System.out.println("Длина ключа: "+dct.getLengthKey());
         System.out.println("Длина значения: "+dct.getLengthValue());
+        System.out.println("Путь файла словаря: "+dct.path);
     }
 }

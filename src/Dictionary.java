@@ -8,7 +8,7 @@ public abstract class Dictionary {
     private int lengthValue;
     private String alphabetKey;
     private String alphabetValue;
-    private String path;
+    protected String path;
 
     Dictionary(String alphabetKey, String alphabetValue, int lengthKey, int lengthValue) {
         setAlphabetKey(alphabetKey);
@@ -74,6 +74,7 @@ public abstract class Dictionary {
         if (key == null) error += "Ключ является null\n";
         if (key.length() != getLengthKey()) error += "Длина ключа не " + getLengthKey() + "\n";
         if (!key.matches("[" + getAlphabetKey() + "]+")) error += "Неправильные символы ключа\n";
+
         if(error.isEmpty()) return true;
         else return false;
     }
@@ -83,11 +84,12 @@ public abstract class Dictionary {
         if (value == null) error += "Значение равно null\n";
         if (value.length() != getLengthValue()) error += "Длина значения не " + getLengthValue() + "\n";
         if (!value.matches("[" + getAlphabetValue() + "]+")) error += "Неправильные символы значения\n";
+
         if(error.isEmpty()) return true;
         else return false;
     }
 
-    protected void addWord(String key, String value) throws WordAddedException {
+    protected void addWord(String key, String value) throws WordAddedException2 {
         /*
         String error = "";
         if (key == null) error += "Ключ является null\n";
@@ -110,14 +112,14 @@ public abstract class Dictionary {
 
     }
 
-    protected void deleteWord(String key) throws KeyNotExistsException {
+    protected void deleteWord(String key) throws KeyNotExistsException2 {
         if (keyExists(key)) {
             getSlovar().remove(key);
             UpdateFile();
         }
     }
 
-    protected String findWordByKey(String key) throws KeyNotExistsException {
+    protected String findWordByKey(String key) throws KeyNotExistsException2 {
         if (keyExists(key)) {
             return getSlovar().get(key);
         } else return new String("");
@@ -134,16 +136,16 @@ public abstract class Dictionary {
         return temp;
     }
 
-    private boolean keyExists(String key) throws KeyNotExistsException {
+    private boolean keyExists(String key) throws KeyNotExistsException2 {
         if (getSlovar().get(key) != null || (getSlovar().get(key) == null && getSlovar().containsKey(key))) {
             return true;
         } else {
-            throw new KeyNotExistsException("Ключ не найден");
+            throw new KeyNotExistsException2("Ключ не найден");
         }
     }
 
     protected void LoadFile(String p) {
-        path = p;
+        path = p+".gc";
         File file = new File(path);
         if (file.exists()) {
             try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(path))) {
