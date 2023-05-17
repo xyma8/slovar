@@ -9,6 +9,8 @@ public class Main {
         dct = new EngDictionary();
         int menu = -1;
         System.out.println("Меню:");
+        changeDictionary();
+        loadFile();
         while(menu != 0) {
             System.out.println();
             System.out.println("1 - Сменить словарь");
@@ -17,6 +19,7 @@ public class Main {
             System.out.println("4 - Поиск записи по ключу");
             System.out.println("5 - Добавить запись");
             System.out.println("6 - Информация о словаре");
+            System.out.println("7 - Изменить путь к файлу");
             System.out.println("0 - Выход");
             String str = scanner.next();
             try {
@@ -30,6 +33,7 @@ public class Main {
             if(menu==4) findEntryByKey();
             if(menu==5) addEntry();
             if(menu==6) infoDictionary();
+            if(menu==7) loadFile();
         }
     }
 
@@ -56,6 +60,12 @@ public class Main {
             }
         }
         infoDictionary();
+    }
+
+    private static void loadFile() {
+        System.out.println("Введите путь к файлу словаря");
+        String str = scanner.next();
+        dct.LoadFile(str);
     }
 
     private static void readFromSlovar() {
@@ -91,21 +101,25 @@ public class Main {
     }
 
     private static void addEntry() {
+        boolean r = false;
+        while(!r) {
         System.out.println("Введите ключ:");
         String key = scanner.next();
         System.out.println("Введите значение");
         String value = scanner.next();
-        try {
-            dct.addWord(key, value);
-        }catch (Exception e){
-            System.out.println(e);
+            try {
+                dct.addWord(key, value);
+                r = true;
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         }
-
     }
 
     private static void infoDictionary() {
         System.out.println("Алфавит ключа: "+dct.getAlphabetKey());
         System.out.println("Алфавит значения: "+dct.getAlphabetValue());
         System.out.println("Длина ключа: "+dct.getLengthKey());
+        System.out.println("Длина значения: "+dct.getLengthValue());
     }
 }
