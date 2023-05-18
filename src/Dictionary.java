@@ -59,9 +59,9 @@ public abstract class Dictionary {
 
     protected void setSlovar(Map<String, String> s) {
         if (s != null) {
-            for(int i=0;i<s.size();i++) {
+            for (int i = 0; i < s.size(); i++) {
                 for (Map.Entry<String, String> entry : s.entrySet()) {
-                    if(checkKey(entry.getKey()) && checkValue(entry.getValue())) {
+                    if (checkKey(entry.getKey()) && checkValue(entry.getValue())) {
                         slovar.put(entry.getKey(), entry.getValue());
                     }
                 }
@@ -75,7 +75,7 @@ public abstract class Dictionary {
         if (key.length() != getLengthKey()) error += "Длина ключа не " + getLengthKey() + "\n";
         if (!key.matches("[" + getAlphabetKey() + "]+")) error += "Неправильные символы ключа\n";
 
-        if(error.isEmpty()) return true;
+        if (error.isEmpty()) return true;
         else return false;
     }
 
@@ -85,7 +85,7 @@ public abstract class Dictionary {
         if (value.length() != getLengthValue()) error += "Длина значения не " + getLengthValue() + "\n";
         if (!value.matches("[" + getAlphabetValue() + "]+")) error += "Неправильные символы значения\n";
 
-        if(error.isEmpty()) return true;
+        if (error.isEmpty()) return true;
         else return false;
     }
 
@@ -105,7 +105,7 @@ public abstract class Dictionary {
             UpdateFile();
         }
         */
-        if(checkKey(key) && checkValue(value)) {
+        if (checkKey(key) && checkValue(value)) {
             slovar.put(key, value);
             UpdateFile();
         }
@@ -145,7 +145,7 @@ public abstract class Dictionary {
     }
 
     protected void LoadFile(String p) {
-        path = p+".gc";
+        path = p + ".gc";
         File file = new File(path);
         if (file.exists()) {
             try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(path))) {
